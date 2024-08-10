@@ -8,6 +8,7 @@ const useUser = () => {
   useEffect(() => {
     const fetchUser = async () => {
       const user = await UserService().getUserByUsername("jakezegil");
+      console.log(user.data);
       setUser(user.data);
     };
     fetchUser();

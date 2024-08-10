@@ -1,6 +1,7 @@
 import BikeService from "../services/BikeService";
 import useStore from "./store";
 import { useEffect } from "react";
+import useUser from "./user";
 
 type RideInput = {
   distance: number;
@@ -10,12 +11,13 @@ type RideInput = {
 
 const useRides = () => {
   const { rides, setRides, user } = useStore();
+  useUser()
 
   useEffect(() => {
     if (!user) return;
     const fetchRides = async () => {
       const rides = await BikeService().getRidesByUserId(user.id);
-      setRides(rides.data);
+      setRides(rides.data.bikeRides);
     };
     fetchRides();
   // eslint-disable-next-line react-hooks/exhaustive-deps

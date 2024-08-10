@@ -16,10 +16,10 @@ userRouter.post("/", validateRequestBody(CreateUser), async (req, res) => {
   }
 });
 
-userRouter.get("/:id", validateRequestParams(GetUser), async (req, res) => {
+userRouter.get("/:username", validateRequestParams(GetUser), async (req, res) => {
   try {
-    const userId = req.params.id;
-    const user = await UserService().getUserById(userId);
+    const username = req.params.username;
+    const user = await UserService().getUserByUsername(username);
     if (user) {
       res.status(200).json(user);
     } else {

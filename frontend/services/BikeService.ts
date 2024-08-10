@@ -22,8 +22,9 @@ const BikeService = () => ({
     userId: string,
     bikeRide: BikeRideInput
   ): Response<BikeRide> => api.post("/bike/ride", { userId, ...bikeRide }),
-  getAllBikeRides: (): Response<BikeRide[]> => api.get("/bike/rides"),
-  getRidesByUserId: (userId: string): Response<BikeRide[]> =>
+  getAllBikeRides: (): Response<{ bikeRides: BikeRide[] }> =>
+    api.get("/bike/rides"),
+  getRidesByUserId: (userId: string): Response<{ bikeRides: BikeRide[] }> =>
     api.get(`/bike/rides/${userId}`),
 });
 

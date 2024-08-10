@@ -1,7 +1,9 @@
 import "./App.css";
 import useRides from "../state/rides";
+import useUser from "../state/user";
 
 function App() {
+  const { user } = useUser();
   const { rides } = useRides();
 
   return (
