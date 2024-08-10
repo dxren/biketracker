@@ -16,10 +16,10 @@ const UserService = (): IUserService => ({
     const users = await prismaClient.user.findMany();
     return users;
   },
-  getUserById: async (id: string) => {
+  getUserByUsername: async (username: string) => {
     const user = await prismaClient.user.findUnique({
       where: {
-        id,
+        username,
       },
     });
     return user;

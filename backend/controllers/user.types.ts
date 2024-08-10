@@ -8,7 +8,7 @@ export const CreateUser = z.object({
 export type CreateUser = z.infer<typeof CreateUser>;
 
 export const GetUser = z.object({
-  id: z.string().min(1),
+  username: z.string().min(1),
 });
 
 export type GetUser = z.infer<typeof GetUser>;

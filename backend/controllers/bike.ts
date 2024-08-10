@@ -7,6 +7,8 @@ import {
 import {
   CreateBikeRideParamsSchema,
   GetBikeRidesByUserIdParamsSchema,
+  UpdateBikeRideBodySchema,
+  UpdateBikeRideParamsSchema,
 } from "./bike.types";
 const bikeRouter = express.Router();
 
@@ -39,5 +41,23 @@ bikeRouter.get(
     }
   }
 );
+
+
+bikeRouter.put(
+    "/ride/:rideId",
+    validateRequestParams(UpdateBikeRideParamsSchema),
+    validateRequestBody(UpdateBikeRideBodySchema),
+    async (req, res) => {
+      try {
+        const rideId = req.params.rideId;
+        const body = req.body;
+        const bikeRide = await BikeService().updateBikeRide(rideId, body);
+        res.status(200).json({ bikeRide });
+      } catch (error) {
+        console.error("error fetching bike rides: ", error);
+        res.status(500).json({ error: "failed to fetch bike rides" });
+      }
+    }
+  );
 
 export default bikeRouter;

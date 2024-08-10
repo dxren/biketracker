@@ -37,6 +37,23 @@ const BikeService = (): IBikeService => ({
       duration: ride.durationInMinutes,
     }));
   },
+  updateBikeRide: async (rideId, params) => {
+    const updatedBikeRide = await prismaClient.bikeRide.update({
+      where: {
+        id: rideId,
+      },
+      data: {
+        distanceInMiles: params.distance,
+        durationInMinutes: params.duration,
+        notes: params.notes,
+      },
+    });
+    return {
+      ...updatedBikeRide,
+      distance: updatedBikeRide.distanceInMiles,
+      duration: updatedBikeRide.durationInMinutes,
+    };
+  },
 });
 
 export default BikeService;

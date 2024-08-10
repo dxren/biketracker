@@ -12,7 +12,9 @@
   "dependencies": {
     "@prisma/client": "5.18.0",
     "@types/cookie-parser": "^1.4.7",
+    "@types/cors": "^2.8.17",
     "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
     "zod": "^3.23.8",
     "zod-express-middleware": "^1.4.0"
   }

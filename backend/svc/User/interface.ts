@@ -13,5 +13,5 @@ interface User {
 export interface IUserService {
   createUser(params: CreateUserParams): Promise<User>;
   getAllUsers(): Promise<User[]>;
-  getUserById(id: string): Promise<User | null>;
+  getUserByUsername(username: string): Promise<User | null>;
 }

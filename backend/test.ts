@@ -13,7 +13,10 @@ import UserService from "./svc/User/service";
 //     duration: 20
 // })
 
-const allBikeRides = await BikeService().getRidesByUserId("clzoam9yb0000fbusenggsrst")
+// const user = await UserService().getUserByUsername("jakezegil")
 
+// const allBikeRides = await BikeService().getRidesByUserId(user?.id ?? "")
 
-console.log( allBikeRides)
+const users = await BikeService().getAllBikeRides()
+
+console.log( users)
