@@ -1,8 +1,8 @@
 import api from "../network/api";
 
 type BikeRideInput = {
-  distance: number;
-  duration: number;
+  distance?: number;
+  duration?: number;
   notes?: string;
 };
 
@@ -26,6 +26,9 @@ const BikeService = () => ({
     api.get("/bike/rides"),
   getRidesByUserId: (userId: string): Response<{ bikeRides: BikeRide[] }> =>
     api.get(`/bike/rides/${userId}`),
+  updateBikeRide: (rideId: string, ride: BikeRideInput): Response<{
+    bikeRide: BikeRide;
+  }> => api.put(`/bike/ride/${rideId}`, ride),
 });
 
 export default BikeService;

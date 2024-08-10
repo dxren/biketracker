@@ -5,7 +5,7 @@ import { useState } from "react";
 
 function App() {
   const [username, setUsername] = useState("jakezegil");
-  const { rides } = useRides();
+  const { rides, updateRide } = useRides();
   const { user } = useUser(username);
 
   return (
@@ -14,7 +14,17 @@ function App() {
       {user && <div>{user.email}</div>}
       {
         rides.map((ride) => (
-          <div key={ride.id}>{new Date(ride.loggedAt).toString()}: {ride.distance} {ride.duration}</div>
+          <div key={ride.id}>
+            <div>
+              {new Date(ride.loggedAt).toString()}: {ride.distance} {ride.duration}
+            </div>
+            <button onClick={() => updateRide(ride.id, { distance: ride.distance + 1 })}>
+              Add 1 mile
+            </button>
+            <button onClick={() => updateRide(ride.id, { distance: ride.distance - 1 })}>
+              Subtract 1 mile
+            </button>
+          </div>
         ))
       }
     </div>
