@@ -1,14 +1,18 @@
-import './App.css'
-import React from 'react'
-import { WorkoutLog } from './components/WorkoutLog'
+import "./App.css";
+import useRides from "../state/rides";
 
 function App() {
+  const { rides } = useRides();
 
   return (
-    <>
-      <WorkoutLog />
-    </>
-  )
+    <div>
+      {
+        rides.map((ride) => (
+          <div key={ride.id}>{new Date(ride.loggedAt).toString()}: {ride.distance} {ride.duration}</div>
+        ))
+      }
+    </div>
+  );
 }
 
-export default App
+export default App;
