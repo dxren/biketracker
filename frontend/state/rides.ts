@@ -21,7 +21,7 @@ const useRides = () => {
     };
     fetchRides();
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [user?.username]);
+  }, [user]);
 
   const createRide = async (ride: RideInput) => {
     // @TODO: add error handling
