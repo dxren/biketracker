@@ -17,6 +17,6 @@ import UserService from "./svc/User/service";
 
 // const allBikeRides = await BikeService().getRidesByUserId(user?.id ?? "")
 
-const users = await UserService().getAllUsers()
+const users = await BikeService().getAllBikeRides()
 
 console.log( users)
